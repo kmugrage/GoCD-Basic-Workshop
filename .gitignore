@@ -1,0 +1,4 @@
+*.box
+gitrepos
+.vagrant/
+workshop-installers/
