@@ -1,0 +1,34 @@
+pipelines:
+  DeployStaging:
+    group: Operations
+
+    materials:
+      FunctionalTesting:
+        pipeline: FunctionalTesting
+        stage: FunctionalTest
+      UserAcceptance:
+        pipeline: UserAcceptance
+        stage: Approved
+
+    stages:
+      - DeployApplications:
+          clean_workspace: yes
+          jobs:
+            deploy:
+              tasks:
+                - fetch:
+                    pipeline: Application/UserAcceptance
+                    stage: Package
+                    job: MakePackage
+                    is_file: yes
+                    source: installer.tgz
+                - exec:
+                    command: /bin/bash 
+                    arguments:
+                      - -c
+                      - "tar xfvz installer.tgz"
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - "installer/deploy_application.sh Staging"

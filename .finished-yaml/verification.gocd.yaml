@@ -1,0 +1,94 @@
+pipelines:
+  FunctionalTesting:
+    group: Development
+    locking: on
+
+    materials:
+      services:
+        pipeline: Application
+        stage: package
+      AppGit:
+        git: /vagrant/application
+
+    stages:
+      - DeployApplications:
+          clean_workspace: yes
+          jobs:
+            deploy:
+              tasks:
+                - fetch:
+                    pipeline: Application
+                    stage: Package
+                    job: MakePackage
+                    is_file: yes
+                    source: installer.tgz
+                - exec:
+                    command: /bin/bash 
+                    arguments:
+                      - -c
+                      - "tar xfvz installer.tgz"
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - "installer/deploy_application.sh FunctionalTesting"
+      - FunctionalTest:
+          jobs:
+            runTests:
+              run_instances: 3
+              artifacts:
+                - build:
+                    source: testoutput
+              tabs:
+                report: testoutput/output.txt
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - functional_test/functional_test.sh
+
+  UserAcceptance:
+    group: Development
+    locking: on
+
+    materials:
+      services:
+        pipeline: Application
+        stage: package
+      AppGit:
+        git: /vagrant/application
+
+    stages:
+      - DeployApplications:
+          clean_workspace: yes
+          jobs:
+            deploy:
+              tasks:
+                - fetch:
+                    pipeline: Application
+                    stage: Package
+                    job: MakePackage
+                    is_file: yes
+                    source: installer.tgz
+                - exec:
+                    command: /bin/bash 
+                    arguments:
+                      - -c
+                      - "tar xfvz installer.tgz"
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - "installer/deploy_application.sh UserAcceptance"
+      - Approved:
+          approval:
+            type: manual
+          jobs:
+            approve:
+              tasks:
+                - exec:
+                    command: /bin/echo
+                    arguments:
+                      - "Approved"
+
