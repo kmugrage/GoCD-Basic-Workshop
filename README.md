@@ -42,3 +42,5 @@ Host workshop
 * Type 'git clone ssh://vagrant@workshop/gitrepo/application.git'
 * Type 'git clone ssh://vagrant@workshop/gitrepo/gocd-configuration.git'
 
+Workshop instructions at https://github.com/kmugrage/GoCD-Basic-Workshop/blob/master/WorkshopInstructions.md
+
