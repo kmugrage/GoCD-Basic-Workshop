@@ -3,3 +3,5 @@ bak/
 gitrepos
 .vagrant/
 workshop-installers/
+application/
+gocd-configuration/
