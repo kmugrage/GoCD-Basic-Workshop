@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="84">
+  <server artifactsdir="artifacts" agentAutoRegisterKey="super-secret-key" commandRepositoryLocation="default" serverId="e2a0c5b7-ba6a-4c7b-9247-66147f3ee146" />
+  <config-repos>
+    <config-repo plugin="yaml.config.plugin">
+      <git url="/gitrepo/gocd-configuration" />
+    </config-repo>
+  </config-repos>
+  <pipelines group="Development">
+    <pipeline name="Application">
+      <materials>
+        <git url="/gitrepo/application" />
+      </materials>
+      <stage name="BuildApplication">
+        <jobs>
+          <job name="Build">
+            <tasks>
+              <exec command="/bin/bash">
+                <arg>-c</arg>
+                <arg>application/build_application.sh</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="UnitTest">
+        <jobs>
+          <job name="UnitTest">
+            <tasks>
+              <exec command="/bin/bash">
+                <arg>-c</arg>
+                <arg>application/unit_test_application.sh</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="Package">
+        <jobs>
+          <job name="MakePackage">
+            <tasks>
+              <exec command="/bin/bash">
+                <arg>-c</arg>
+                <arg>application/package_application.sh</arg>
+              </exec>
+            </tasks>
+            <artifacts>
+              <artifact src="installer.tgz" />
+            </artifacts>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+  <pipelines group="Operations" />
+  <agents>
+    <agent hostname="vagrant-ubuntu-trusty-64" ipaddress="127.0.0.1" uuid="5cedb528-2640-44a9-89dd-e7c66eeac9e1" />
+    <agent hostname="vagrant-ubuntu-trusty-64" ipaddress="127.0.0.1" uuid="14150c13-e8b2-4c93-9ad2-10673440a961" />
+    <agent hostname="vagrant-ubuntu-trusty-64" ipaddress="127.0.0.1" uuid="d8b40c2e-4454-499c-a095-1f2d34273524" />
+  </agents>
+</cruise>
