@@ -15,7 +15,7 @@ Navigate to http://localhost:8153/ using your web browser
 
   * [Instructor gives an overview of material options on next page]
     * Material Type: Git
-    * URL: /vagrant/application
+    * URL: /gitrepo/application
     * Branch: master
 
   * [Instructor gives overview of Stage / Job / Task]
