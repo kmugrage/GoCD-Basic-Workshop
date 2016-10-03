@@ -5,3 +5,4 @@ gitrepos
 workshop-installers/
 application/
 gocd-configuration/
+*.jar
