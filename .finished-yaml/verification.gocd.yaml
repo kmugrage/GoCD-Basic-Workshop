@@ -8,7 +8,7 @@ pipelines:
         pipeline: Application
         stage: package
       AppGit:
-        git: /vagrant/application
+        git: /gitrepo/application
 
     stages:
       - DeployApplications:
@@ -57,7 +57,7 @@ pipelines:
         pipeline: Application
         stage: package
       AppGit:
-        git: /vagrant/application
+        git: /gitrepo/application
 
     stages:
       - DeployApplications:
