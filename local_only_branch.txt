@@ -1,0 +1,7 @@
+This branch is used to maintain a version that uses existing
+git repos in the vagrant directory. It's used when the workshop
+is distributed on USB drive so that people aren't required to
+have SSH clients configured. 
+
+"Branches are bad", but having some sort of switch in things like
+workshop documentation which cause confusing is probably worse
