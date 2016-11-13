@@ -6,7 +6,7 @@ pipelines:
     materials:
       services:
         pipeline: Application
-        stage: package
+        stage: Package
       AppGit:
         git: /vagrant/application
 
@@ -55,7 +55,7 @@ pipelines:
     materials:
       services:
         pipeline: Application
-        stage: package
+        stage: Package
       AppGit:
         git: /vagrant/application
 
