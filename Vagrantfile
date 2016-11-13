@@ -3,6 +3,9 @@
 
 Vagrant.configure("2") do |config|
   
+  # The vbguest plugin often causes issues with the box for some reason. Should be
+  # addressed instead of disabling it
+  
   if Vagrant.has_plugin?("vagrant-vbguest")
     config.vbguest.auto_update = false
   end

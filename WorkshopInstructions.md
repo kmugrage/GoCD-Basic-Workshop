@@ -1,6 +1,8 @@
 
 # GoCD Workshop Instructions
 
+These are the intructions for the presenter of the GoCD Workshop. 
+
 Navigate to http://localhost:8153/ using your web browser
 
 * [Instructor gives over of GoCD user interface]
@@ -15,7 +17,7 @@ Navigate to http://localhost:8153/ using your web browser
 
   * [Instructor gives an overview of material options on next page]
     * Material Type: Git
-    * URL: /gitrepo/application
+    * URL: /vagrant/application
     * Branch: master
 
   * [Instructor gives overview of Stage / Job / Task]
@@ -90,7 +92,7 @@ Navigate to http://localhost:8153/ using your web browser
 ```
   <config-repos>
     <config-repo plugin="yaml.config.plugin">
-      <git url="/gitrepo/gocd-configuration" />
+      <git url="/vagrant/gocd-configuration" />
     </config-repo>
   </config-repos>
 ```
