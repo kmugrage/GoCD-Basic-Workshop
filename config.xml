@@ -3,13 +3,13 @@
   <server artifactsdir="artifacts" agentAutoRegisterKey="super-secret-key" commandRepositoryLocation="default" serverId="e2a0c5b7-ba6a-4c7b-9247-66147f3ee146" />
   <config-repos>
     <config-repo plugin="yaml.config.plugin">
-      <git url="/gitrepo/gocd-configuration" />
+      <git url="/vagrant/gocd-configuration" />
     </config-repo>
   </config-repos>
   <pipelines group="Development">
     <pipeline name="Application">
       <materials>
-        <git url="/gitrepo/application" />
+        <git url="/vagrant/application" />
       </materials>
       <stage name="BuildApplication">
         <jobs>
