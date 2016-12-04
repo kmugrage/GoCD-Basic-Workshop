@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
     config.vbguest.auto_update = false
   end
 
-  config.vm.box = "gocd/2016-workshop"
+  config.vm.box = "2016-GoCD-Workshop.box"
 
   config.vm.network "forwarded_port", guest: 8153, host: 8153, autocorrect: true
 
