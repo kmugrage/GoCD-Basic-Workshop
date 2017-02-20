@@ -96,7 +96,7 @@ Navigate to http://localhost:8153/ using your web browser
 ```
 
   * In the gocd-configuration directory that you cloned during setup, rename verification.gocd.yaml.start to verification.gocd.yaml
-  * Commit the file, and push it to the origin repo ``` git commit -am 'some comment'; git push ```
+  * Commit the file, and push it to the origin repo ``` git add .; git commit -m 'some comment'; git push ```
 
 
   * Navigate to the home page (Note: if you called your first pipeline something other than ‘Application; you’re going to get an error)
